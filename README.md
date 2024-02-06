@@ -44,7 +44,8 @@ internal class Persona
 
 
         }
-``` c
+
+``` 
 
 ***
 Il codice definisce una classe chiamata Persona.

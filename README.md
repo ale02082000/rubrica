@@ -8,7 +8,9 @@ Realizzare un programma che visualizza due griglie; una con un elenco di persone
 - prevedere due griglie che visualizzano il contenuto dei due file
 
 
-< img src="C:\Users\ALE\OneDrive\Desktop\umlrubrica.png"
+<img src="https://github.com/ale02082000/rubrica/assets/127590077/fa8cdde7-aa9a-4015-b6fe-d6f83eaf5f0b">
+
+
 ***
 
 

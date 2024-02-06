@@ -6,9 +6,8 @@ Realizzare un programma che visualizza due griglie; una con un elenco di persone
 - prevedere due classi: "Persona" e "Contatto"
 - prevedere due file: "persone.csv" e "contatti.csv
 - prevedere due griglie che visualizzano il contenuto dei due file
-***
 
-***
+
 < img src="C:\Users\ALE\OneDrive\Desktop\umlrubrica.png"
 ***
 

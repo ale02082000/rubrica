@@ -9,7 +9,7 @@ Realizzare un programma che visualizza due griglie; una con un elenco di persone
 ***
 
 ***
-< img src=-"C:\Users\ALE\OneDrive\Desktop\umlrubrica.png"
+< img src="C:\Users\ALE\OneDrive\Desktop\umlrubrica.png"
 ***
 
 

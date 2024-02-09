@@ -31,8 +31,7 @@
             </DataGrid>
             <TextBlock x:Name="statusBarText" Grid.Row="2"></TextBlock>
         </Grid>
-        <DataGrid x:Name="dgContatti"
-                  Grid.Column="1">
+        <DataGrid x:Name="dgContatti" SelectionChanged="dgContatti_SelectionChanged" Grid.Column="1">
         </DataGrid>
     </Grid>
 

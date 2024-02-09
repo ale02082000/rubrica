@@ -30,8 +30,8 @@ namespace bartolucci.alessandro._4i.rubrica
                 }
                 dgPersone.ItemsSource = Persone; 
 
-                statusBarText.Text = $"Ho letto dal file {Persone.Count} righe";
-
+                statusBarText.Text = $"Ho letto dal file {Persone.Count} persone";
+                finPersone.Close();
                 
               
                 StreamReader finContatti = new StreamReader("contatti.csv");
@@ -42,7 +42,7 @@ namespace bartolucci.alessandro._4i.rubrica
                     Contatto contatto = new Contatto(rigaContatto);
                     Contatti.Add(contatto);
                 } 
-                dgContatti.ItemsSource = Contatti;
+               // dgContatti.ItemsSource = Contatti;
             }
             catch (Exception ex)
             {
@@ -52,7 +52,9 @@ namespace bartolucci.alessandro._4i.rubrica
         private void dgDati_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Persona p = e.AddedItems[0] as Persona;
-            statusBarText.Text = $"{p.Cognome}";
+           if (p != null)
+            {
+                statusbar.Text = $" Hai selezionato {p.Nome} {p.Cognome}";
 
             List<Contatto> contattiFiltrati = new List<Contatto>();
             foreach(var item in Contatti)
@@ -60,6 +62,10 @@ namespace bartolucci.alessandro._4i.rubrica
                     contattiFiltrati.Add(item);
 
             dgContatti.ItemsSource = contattiFiltrati;
+
+        }
+             private void dgContatti_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }

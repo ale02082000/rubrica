@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace bartolucci.alessandro._4i.rubrica
 {
-    internal class Persona
+      public class Persona
     {
         public int IdPersona { get; set; }
         public string Nome { get; set; }
@@ -49,4 +50,29 @@ namespace bartolucci.alessandro._4i.rubrica
 
 
     }
+
+    public class  Persone : List<Persona>
+    {
+        public Persone()
+        {
+
+        }
+
+        public Persone(string Nomefile)
+        {
+
+            StreamReader finPersone = new StreamReader(Nomefile);
+           finPersone.ReadLine();
+            while (!finPersone.EndOfStream)
+            
+                this.Add(new Persona(finPersone.ReadLine()));
+
+                
+            
+            finPersone.Close();
+        }
+
+    }
+    
+
 }

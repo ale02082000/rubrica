@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace bartolucci.alessandro._4i.rubrica
 {
 
     public partial class MainWindow : Window
     {
-        List<Persona> Persone = new List<Persona>();
-        List<Contatto> Contatti = new List<Contatto>();
+        Persone Persone;
+        Contatti contatti;
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -20,28 +22,19 @@ namespace bartolucci.alessandro._4i.rubrica
         {
             try
             {
-                StreamReader finPersone = new StreamReader("persone.csv");
-                finPersone.ReadLine();
-                while (!finPersone.EndOfStream)
-                {
-                    string rigaPersona = finPersone.ReadLine();
-                    Persona persona = new Persona(rigaPersona);
-                    Persone.Add(persona);
-                }
+                Persone = new ("Persone.csv");
                 dgPersone.ItemsSource = Persone;
 
                 statusBarText.Text = $"Ho letto dal file {Persone.Count} persone";
-                finPersone.Close();
+
+                contatti = new ("Contatti.csv");
+
+                statusBarText.Text = $"Ho letto dal file " +
+                    $"{Persone.Count}  persone e " +
+                    $"{contatti.Count} contatti";
 
 
-                StreamReader finContatti = new StreamReader("contatti.csv");
-                finContatti.ReadLine();
-                while (!finContatti.EndOfStream)
-                {
-                    string rigaContatto = finContatti.ReadLine();
-                    Contatto contatto = new Contatto(rigaContatto);
-                    Contatti.Add(contatto);
-                }
+
                 // dgContatti.ItemsSource = Contatti;
             }
             catch (Exception ex)
@@ -56,15 +49,32 @@ namespace bartolucci.alessandro._4i.rubrica
             {
                 statusBarText.Text = $" Hai selezionato {p.Nome} {p.Cognome}";
 
-                List<Contatto> contattiFiltrati = new List<Contatto>();
-                foreach (var item in Contatti)
+                Contatti contattiFiltrati = new();
+                foreach (var item in contatti)
                     if (item.IdPersona == p.IdPersona)
                         contattiFiltrati.Add(item);
 
                 dgContatti.ItemsSource = contattiFiltrati;
 
             }
-         
+
+        }
+        private void adOgniRiga(object sender, DataGridRowEventArgs e)
+        {
+
+            Persona p = e.Row.Item as Persona;
+
+            if (p != null)
+            {
+                if (p.IdPersona == 1)
+                {
+                    e.Row.Background = Brushes.Red;
+                    e.Row.Foreground = Brushes.White;
+
+                }
+
+            }
+            
         }
 
         private void dgContatti_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,3 +83,4 @@ namespace bartolucci.alessandro._4i.rubrica
         }
     }
 }
+

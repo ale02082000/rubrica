@@ -7,6 +7,13 @@ Realizzare un programma che visualizza due griglie; una con un elenco di persone
 - prevedere due file: "persone.csv" e "contatti.csv
 - prevedere due griglie che visualizzano il contenuto dei due file
 
+- Modificare il progetto UnoAMolti2 in modo che 
+- abbia una classe Persone che deriva da List<Persona>
+- abbia una classe Contatti che deriva da List<Contatto>
+- utilizzi la classe Contatto come base
+- abbia una serie di classi derivate ContattoEmail, ContattoWeb etc etc
+- utilizzi i costruttori di Persone e Contatti per leggere i rispettivi file
+
 
 <img src="https://github.com/ale02082000/rubrica/assets/127590077/fa8cdde7-aa9a-4015-b6fe-d6f83eaf5f0b">
 
@@ -81,3 +88,37 @@ Quando un'istanza di Persona viene selezionata, il metodo estrae l'ID di quella 
 Nello xaml.cs vengono create due liste in cui si caricano le informazioni prese dai due file csv (persone.csv) e (contatti.csv).
 
 ***
+
+```
+
+public class Contatti : List<Contatto>
+    {
+        public Contatti()
+        {
+
+        }
+
+        public Contatti(string Nomefile)
+        {
+
+            StreamReader finContatti = new StreamReader(Nomefile);
+            finContatti.ReadLine();
+            while (!finContatti.EndOfStream)
+            
+                this.Add( Contatto.MakeContatto(finContatti.ReadLine()));
+
+              
+            
+            finContatti.Close();
+        }
+
+
+***
+
+Dopo aver studiato l'ereditarietà e il polimorfismo , abbiamo implementato questo codice:
+definisce una classe chiamata Contatti che eredita dalla classe List<Contatto>,
+Il secondo costruttore (public Contatti(string Nomefile)) legge un file di testo dal percorso specificato dal parametro Nomefile. Per ogni riga, chiama un metodo statico MakeContatto() della classe Contatto per creare un nuovo oggetto Contatto, che viene quindi aggiunto alla lista Contatti. Infine, il file viene chiuso dopo aver terminato la lettura.
+
+***
+
+

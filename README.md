@@ -89,7 +89,7 @@ Nello xaml.cs vengono create due liste in cui si caricano le informazioni prese 
 
 ***
 
-```
+``` c#
 
 public class Contatti : List<Contatto>
     {
